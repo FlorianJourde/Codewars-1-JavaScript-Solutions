@@ -164,7 +164,7 @@ array(2) {
 
 function removeEveryOther($array) {
     $count = count($array);  
-    for($i=1;$i<=$count;$i=$i+2){    
+    for($i=1;$i<=$count;$i=$i+2){
        unset($array[$i]);
     }
     return $array;
@@ -175,14 +175,14 @@ function repeatStr($n, $str) {
     $arr = array();
     
     for ($i = 0; $i < $n; $i++) {
-      $arr[] = $str;
+        $arr[] = $str;
     }
     
     return implode("", $arr);
 }
 
 function repeatStr($n, $str) {
-  return str_repeat($str, $n);
+    return str_repeat($str, $n);
 }
 
 // Sort and Star
@@ -192,14 +192,14 @@ function twoSort($s) {
     $answer = array();
     
     for ($i = 0; $i < count($s); $i++) {
-      if (ord(substr($s[$i], 0, 1)) < $result || $result == 0) {
-        $str_result = $s[$i];
-        $result = ord(substr($s[$i], 0, 1));
-      }
+        if (ord(substr($s[$i], 0, 1)) < $result || $result == 0) {
+            $str_result = $s[$i];
+            $result = ord(substr($s[$i], 0, 1));
+        }
     }
     
     for ($i = 0; $i < strlen($str_result); $i++) {
-      $answer[] = $str_result[$i];
+        $answer[] = $str_result[$i];
     }
     
     return implode("***", $answer);
@@ -215,11 +215,11 @@ function points(array $games): int {
     $score = 0;
       
     for ($i = 0; $i < count($games); $i++) {
-      if (intval($games[$i][0], 10) > intval($games[$i][2], 10)) {
-        $score += 3;
-      } else if (intval($games[$i][0], 10) == intval($games[$i][2], 10)) {
-        $score += 1;
-      }
+        if (intval($games[$i][0], 10) > intval($games[$i][2], 10)) {
+            $score += 3;
+        } else if (intval($games[$i][0], 10) == intval($games[$i][2], 10)) {
+            $score += 1;
+        }
     }
     
     return $score;
@@ -229,15 +229,15 @@ function points(array $games): int {
     $score = 0;
     
     foreach($games as $game) {
-      $gameScore = explode(':', $game);
+        $gameScore = explode(':', $game);
       
-      if ($gameScore[0] > $gameScore[1]) {
-        $score += 3;
-      }
+        if ($gameScore[0] > $gameScore[1]) {
+            $score += 3;
+        }
       
-      if ($gameScore[0] === $gameScore[1]) {
-        $score += 1;
-      }
+        if ($gameScore[0] === $gameScore[1]) {
+            $score += 1;
+        }
     } 
     
     return $score;
@@ -251,29 +251,29 @@ function smash(array $words): string {
 // Rock Paper Scissors!
 function rpc ($p1, $p2) {
     if ($p1 === 'rock') {
-      if ($p2 === 'rock') {
-        return 'Draw!';
-      } else if ($p2 === 'scissors') {
-        return 'Player 1 won!';
-      } else if ($p2 === 'paper') {
-        return 'Player 2 won!';
-      }
+        if ($p2 === 'rock') {
+            return 'Draw!';
+        } else if ($p2 === 'scissors') {
+            return 'Player 1 won!';
+        } else if ($p2 === 'paper') {
+            return 'Player 2 won!';
+        }
     } else if ($p1 === 'scissors') {
-      if ($p2 === 'rock') {
-        return 'Player 2 won!';
-      } else if ($p2 === 'scissors') {
-        return 'Draw!';
-      } else if ($p2 === 'paper') {
-        return 'Player 1 won!';
-      }
+        if ($p2 === 'rock') {
+            return 'Player 2 won!';
+        } else if ($p2 === 'scissors') {
+            return 'Draw!';
+        } else if ($p2 === 'paper') {
+            return 'Player 1 won!';
+        }
     } else if ($p1 === 'paper') {
-      if ($p2 === 'rock') {
-        return 'Player 1 won!';
-      } else if ($p2 === 'scissors') {
-        return 'Player 2 won!';
-      } else if ($p2 === 'paper') {
-        return 'Draw!';
-      }
+        if ($p2 === 'rock') {
+            return 'Player 1 won!';
+        } else if ($p2 === 'scissors') {
+            return 'Player 2 won!';
+        } else if ($p2 === 'paper') {
+            return 'Draw!';
+        }
     }
 }
 
@@ -289,3 +289,83 @@ function rpc ($p1, $p2) {
         return 'Player 2 won!';
     }
 }
+
+// Beginner Series #2 Clock
+function past($h, $m, $s) {
+    return (3600000 * $h) + (60000 * $m) + (1000 * $s);
+}
+
+function past($h, $m, $s) {
+    return (($h * 60 * 60) + $m * 60 + $s) * 1000;
+}
+
+// Beginner - Lost Without a Map
+function maps($x) {
+    $result = array();
+  
+    for ($i = 0; $i < count($x); $i++) {
+        $result[] = $x[$i] * 2;
+    }
+  
+    return $result;
+}
+
+function maps($x) {
+    return array_map(function($el) {
+        return $el * 2;
+    }, $x);
+}
+
+
+// You Can't Code Under Pressure #1
+function doubleInteger($i) {
+    return $i * 2;
+}
+
+// Count the Monkeys!
+function monkeyCount($n) {
+    $result = array();
+  
+    for ($i = 0; $i < $n; $i++) {
+        $result[] = $i + 1;
+    }
+  
+    return $result;
+}
+
+function monkeyCount($n) {
+    return range(1, $n);
+}
+
+function monkeyCount($n) {
+    $monkeys = [];
+
+    for($i=1; $i<=$n;$i++)
+    {
+        array_push($monkeys, $i);
+    }
+    
+    return $monkeys;
+}
+
+// Abbreviate a Two Word Name
+function abbrevName($name) {
+    $arr = explode(" ", $name);
+    $result = [];
+  
+    for ($i = 0; $i < count($arr); $i++) {
+        $result[] = strtoupper(substr($arr[$i], 0, 1));
+    }
+  
+    return implode(".", $result);
+}
+
+function abbrevName(string $name): string {
+    $divide = explode(' ', $name);
+    return strtoupper("{$divide[0][0]}.{$divide[1][0]}");
+}
+
+function abbrevName( string $name ) : string {
+    return implode( ".", array_map(function( $n ) { if ( ! empty( $n )) return $n[0]; }, explode(" ", strtoupper( $name ) ) ) );
+}
+
