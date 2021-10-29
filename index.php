@@ -369,3 +369,266 @@ function abbrevName( string $name ) : string {
     return implode( ".", array_map(function( $n ) { if ( ! empty( $n )) return $n[0]; }, explode(" ", strtoupper( $name ) ) ) );
 }
 
+// Find the stray number
+function stray($arr) {
+    $unique = array_count_values($arr);
+  
+    foreach($unique as $key => $value) {
+        if ($value === 1) {
+            return $key;
+        }
+    }
+}
+
+function stray(array $arr) {
+    return array_search(1, array_count_values($arr));
+}
+
+function stray($arr) {
+    sort($arr);
+    return $arr['0'] ==  $arr['1'] ? end($arr) : $arr['0'];
+}
+
+// Correct the mistakes of the character recognition software
+function correct($string) {
+    $string = str_replace('0', 'O', $string);
+    $string = str_replace('1', 'I', $string);
+    $string = str_replace('5', 'S', $string);
+    return $string;
+}
+
+function correct($string) {
+    return str_replace(["5", "0", "1"], ["S", "O", "I"], $string);
+}
+
+// The Feast of Many Beasts
+function feast($beast, $dish){
+    return substr($beast, 0, 1) === substr($dish, 0, 1) && substr($beast, -1, 1) === substr($dish, -1, 1);
+}
+
+function feast($beast, $dish) {
+    return (($beast[0] === $dish[0]) && ($beast[strlen($beast) - 1] === $dish[strlen($dish) - 1]));
+}
+
+// Twice as old
+function twice_as_old($dad_years_old, $son_years_old) {
+    $count_more = $dad_years_old;
+    $count_less = $dad_years_old;
+    
+    for ($i = 0; $i < $dad_years_old; $i++) {
+        if ($count_more === 2 * $son_years_old) {
+            return $count_more - $dad_years_old;
+        } else if ($count_less === 2 * $son_years_old) {
+            return $dad_years_old - $count_less;
+        } else if ($son_years_old === 0) {
+            return $dad_years_old;
+        } else {
+            $count_more = $count_more + 1;
+            $count_less = $count_less - 1;
+        }
+    }
+}
+
+function twice_as_old($dad_years_old, $son_years_old) {
+    return abs($dad_years_old - $son_years_old * 2);
+}
+
+// Simple letter removal
+function solve(string $s, int $k) : string {
+    foreach (range("a", "z") as $l) {
+        if ($s === "" || !$k) {
+            break;
+        }
+        $s = preg_replace("/$l/", "", $s, $k, $count);
+        $k -= $count;
+    }
+    return $s;
+  }
+
+
+// Unfinished Loop - Bug Fixing #1
+function createArray($number){
+    $new_array = array();
+    
+    for($count = 1; $count <= $number; $count++) {
+        $new_array[] = $count;
+    }
+    
+    return $new_array;
+}
+
+function createArray($number) {
+    return range(1, $number);
+}
+
+// L1: Set Alarm
+function setAlarm(bool $employed, bool $vacation): bool {
+    return $employed && !$vacation;
+}
+
+// Find Maximum and Minimum Values of a List
+function maximum($array) {
+    return max($array);
+}
+function minimum($array) {
+    return min($array);
+}
+
+// Student's Final Grade
+function finalGrade($exam, $projects) {
+    if ($exam > 90 || $projects > 10) {
+        return 100;
+    } else if ($exam > 75 && $projects >= 5) {
+        return 90;
+    } else if ($exam > 50 && $projects >= 2) {
+        return 75;
+    } else {
+        return 0;
+    }
+}
+
+function finalGrade($exam, $projects) {
+    if($exam > 90 || $projects > 10) return 100;
+    if($exam > 75 && $projects > 4) return 90;
+    if($exam > 50 && $projects > 1) return 75;
+    return 0;   
+}
+
+// Is this my tail?
+function equivalent($body, $char) {
+    return substr($body, -1, 1) === $char;
+}
+
+// Count of positives / sum of negatives
+function countPositivesSumNegatives($input) {
+    $count = 0;
+    $sum_neg = 0;
+  
+    if ($input == []) {
+      return [];
+    }
+  
+    for ($i = 0; $i < count($input); $i++) {
+         if ($input[$i] > 0) {
+           $count ++;
+         } else {
+           $sum_neg += $input[$i];
+         }
+    }
+  
+    return array($count, $sum_neg);
+}
+
+function countPositivesSumNegatives($input) {
+    if (empty($input)) {
+      return [];
+    }
+    
+    $pos = $neg = 0;
+    foreach ($input as $value) {
+      if ($value > 0) {
+        $pos += 1;
+      } else {
+        $neg += $value;
+      }
+    }
+    
+    return [$pos, $neg];
+}
+
+// String Scramble
+function scramble($str,$arr){
+    $result = array_combine($arr, str_split($str, 1));
+    ksort($result);
+    return implode('', $result);
+}
+
+function scramble($str,$arr){
+    $a = array_combine($arr,str_split($str));
+    ksort($a);
+    return implode('', $a);
+}
+
+// Will there be enough space?
+function enough($cap, $on, $wait) {
+    if ($cap < $on + $wait) {
+        return ($on + $wait) - $cap;
+    } else {
+        return 0;
+    }
+}
+
+function enough($cap, $on, $wait) {
+    return max(0, $wait - $cap + $on);
+}
+
+// Count Odd Numbers below n
+function oddCount($n) {
+    return floor($n/2);
+}
+
+function oddCount($n) {
+    return ($n - 1) / 2;
+}
+
+// Convert boolean values to strings 'Yes' or 'No'.
+function boolToWord($bool){
+    return $bool ? "Yes" : "No";
+}
+
+// Dollars and Cents
+function format_money(float $amount): string {
+    return "$" . number_format((float)$amount, 2, '.', '');
+}
+
+function format_money(float $amount): string {
+    return sprintf('$%.2f', $amount);
+}
+
+// Find numbers which are divisible by given number
+function divisibleBy($numbers, $divisor) {
+    $result = [];
+  
+    for ($i = 0; $i < count($numbers); $i++) {
+        if ($numbers[$i] % $divisor === 0) {
+            $result[] = $numbers[$i];
+        }
+    }
+    
+    return $result;
+}
+
+function divisibleBy($numbers, $divisor) {
+    $total = [];
+    foreach ($numbers as $number) {
+      if ($number % $divisor == 0) {
+        $total[] = $number;
+      }
+    }
+    return $total;     
+}
+
+// Exclamation marks series #3: Remove all exclamation marks from sentence except at the end
+function remove(string $s): string {
+    $count = 0;
+    while (substr($s, -1) == '!') {
+        ++$count;
+        $s = substr($s, 0, -1);
+    }
+    return str_replace('!', '', $s) . str_repeat('!', $count);
+}
+
+function remove(string $s): string {
+    return preg_replace("/!(?!!*$)/", "", $s);
+}
+
+// I love you, a little , a lot, passionately ... not at all
+function how_much_i_love_you(int $nb_petals): string {
+    $statements = Array('I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all');
+    
+    while($nb_petals > 6) {
+        $nb_petals -= 6;
+    }
+    
+    return $statements[$nb_petals - 1];
+}
